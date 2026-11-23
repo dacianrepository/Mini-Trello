@@ -1,0 +1,15 @@
+services:
+  postgres:                          # numele serviciului (îl alegi tu)
+    image: postgres:17               # imaginea oficială, versiunea 17
+    container_name: mini-trello-db   # nume fix, ca să-l găsești ușor în `docker ps`
+    environment:                     # variabile citite de imaginea postgres la prima pornire
+      POSTGRES_DB: minitrello        # baza de date creată automat
+      POSTGRES_USER: minitrello      # utilizatorul
+      POSTGRES_PASSWORD: minitrello  # parola (ok pentru dezvoltare locală, NU pentru producție)
+    ports:
+      - "5433:5432"                  # port Mac : port container
+    volumes:
+      - pgdata:/var/lib/postgresql/data   # datele DB-ului stau în volumul „pgdata”
+
+volumes:
+  pgdata:                            # declari volumul; Docker îl gestionează
