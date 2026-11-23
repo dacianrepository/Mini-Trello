@@ -25,9 +25,10 @@ Sunt Cosmin. Învăț React și Spring Boot construind de la zero o aplicație d
 - Nu modifica fișierele mele fără să îmi ceri voie.
 
 ## Stack
-- Backend: Java 21, Spring Boot 3, Spring Web, Spring Data JPA, Validation, Lombok,
+- Backend: Java 21, Spring Boot 4.2 (Maven), Spring Web MVC, Spring Data JPA, Validation, Lombok,
   Spring Security + JWT (din etapa 4)
-- Bază de date: PostgreSQL, rulat în Docker (docker-compose)
+- Bază de date: PostgreSQL 17, rulat în Docker (docker-compose), expus pe portul **5433**
+  (5432 e ocupat de un PostgreSQL 18 instalat nativ pe Mac)
 - Frontend: React + Vite, Mantine (fără CSS scris de mână), React Router,
   TanStack Query, dnd-kit
 - Unelte: Git, IntelliJ IDEA (backend), VS Code (frontend), Postman
@@ -37,7 +38,7 @@ Sunt Cosmin. Învăț React și Spring Boot construind de la zero o aplicație d
 mini-trello/
 ├── CLAUDE.md
 ├── docker-compose.yml
-├── backend/    (Spring Boot)
+├── MiniTrello-backend/    (Spring Boot)
 └── frontend/   (React + Vite, creat în etapa 2)
 ```
 
@@ -46,7 +47,7 @@ mini-trello/
 Înțelegerea e mai importantă decât calendarul.
 
 ## Etape
-- [ ] 0. Setup — JDK 21, Node LTS, Docker, Git; PostgreSQL în Docker; proiect Spring Boot
+- [x] 0. Setup — JDK 21, Node LTS, Docker, Git; PostgreSQL în Docker; proiect Spring Boot
       generat pe start.spring.io și conectat la baza de date (săpt. 1)
 - [ ] 1. Backend de bază — CRUD pentru Board: entitate JPA, repository, service, controller,
       DTO-uri, validări, tratare globală a erorilor; testat din Postman (săpt. 1)
@@ -61,6 +62,12 @@ mini-trello/
       la joburi), teste, deploy; opțional WebSocket pentru timp real (săpt. 7–8)
 
 ## Progres
-Etapa curentă: 0
+Etapa curentă: 1
 Note din sesiuni:
-- (adaug aici la finalul fiecărei sesiuni ce am făcut și ce urmează)
+- 2026-11-23 — Etapa 0 gata. Repo pe GitHub (dacianrepository/Mini-Trello), autentificare
+  cu fine-grained Personal Access Token (Homebrew nu mai are pachete pentru Mac Intel, deci
+  fără `gh`). PostgreSQL 17 în Docker pe portul 5433. Spring Boot 4.2.0 generat pe
+  start.spring.io (am rămas pe 4.x în loc de 3.x), conectat la DB, `./mvnw test` trece.
+  Rămase opțional: redenumire pachet `com.minitrello.minitrello` → `com.minitrello` și
+  `BackendApplicationTests` → `MiniTrelloApplicationTests`.
+  Următorul pas: Etapa 1 — entitatea JPA `Board`.

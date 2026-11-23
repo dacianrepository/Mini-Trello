@@ -1,4 +1,4 @@
-package com.minitrello.minitrello;
+package com.minitrello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
