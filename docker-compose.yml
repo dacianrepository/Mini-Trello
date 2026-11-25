@@ -11,5 +11,19 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data   # datele DB-ului stau în volumul „pgdata”
 
+  pgadmin:                           # interfață web pentru PostgreSQL
+    image: dpage/pgadmin4:9          # imaginea oficială pgAdmin, versiunea majoră 9
+    container_name: mini-trello-pgadmin
+    environment:                     # contul de login în pgAdmin (NU cel din PostgreSQL)
+      PGADMIN_DEFAULT_EMAIL: admin@minitrello.dev
+      PGADMIN_DEFAULT_PASSWORD: admin  # doar pentru dezvoltare locală
+    ports:
+      - "127.0.0.1:5050:80"          # http://localhost:5050, accesibil doar de pe Mac-ul tău
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin  # păstrează conexiunile salvate
+    depends_on:
+      - postgres                     # pornește după containerul postgres
+
 volumes:
   pgdata:                            # declari volumul; Docker îl gestionează
+  pgadmin-data:
